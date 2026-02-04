@@ -1326,4 +1326,7 @@ body {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
+    .hero-tag,
+.hero-tag-modern {
+    display: none !important;
 }
