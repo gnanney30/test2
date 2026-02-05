@@ -1,0 +1,362 @@
+/* Featured Slider (Top) */
+.featured-slider-section {
+    background: var(--off-white);
+    padding: 5rem 0;
+}
+
+.slider-container-featured {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    position: relative;
+}
+
+.slider-section-title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--main);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.slider-section-subtitle {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.slider-wrapper-featured {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.slide-featured {
+    display: none;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 500px;
+}
+
+.slide-featured.active {
+    display: grid;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-image-featured {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-image-featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content-featured {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-location-featured {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.slide-title-featured {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 0.5rem;
+}
+
+.slide-amount-featured {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.slide-details-featured {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: var(--off-white);
+    border-radius: 8px;
+}
+
+.detail-item-featured {
+    text-align: center;
+}
+
+.detail-label-featured {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-medium);
+    margin-bottom: 0.5rem;
+}
+
+.detail-value-featured {
+    font-weight: 600;
+    color: var(--main);
+}
+
+.slide-description-featured {
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+/* Featured Slider Navigation */
+.slider-nav-featured {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,71,60,0.9);
+    color: var(--white);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-nav-featured:hover {
+    background: var(--main);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slider-nav-featured.prev {
+    left: 1rem;
+}
+
+.slider-nav-featured.next {
+    right: 1rem;
+}
+
+.slider-dots-featured {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.dot-featured {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot-featured.active {
+    background: var(--main);
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* Small Balance Banner Slider (Bottom) */
+.small-balance-section {
+    background: var(--main);
+    padding: 4rem 0;
+}
+
+.small-balance-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    position: relative;
+}
+
+.small-balance-section .slider-section-title {
+    color: var(--white);
+}
+
+.small-balance-section .slider-section-subtitle {
+    color: rgba(255,255,255,0.8);
+}
+
+.banner-slider {
+    position: relative;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-slide {
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
+.banner-slide.active {
+    display: block;
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.banner-content {
+    padding: 2rem;
+}
+
+.banner-location {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.75rem;
+}
+
+.banner-title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.banner-details {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Banner Navigation */
+.banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    color: var(--white);
+    border: 2px solid var(--white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-nav:hover {
+    background: var(--white);
+    color: var(--main);
+}
+
+.banner-nav.prev {
+    left: 1rem;
+}
+
+.banner-nav.next {
+    right: 1rem;
+}
+
+.banner-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.dot-banner {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot-banner.active {
+    background: var(--white);
+    width: 25px;
+    border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .slide-featured {
+        grid-template-columns: 1fr;
+    }
+    
+    .slide-image-featured {
+        min-height: 350px;
+    }
+    
+    .slide-details-featured {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-slider-section,
+    .small-balance-section {
+        padding: 3rem 0;
+    }
+    
+    .slider-container-featured,
+    .small-balance-container {
+        padding: 0 1.5rem;
+    }
+    
+    .slider-section-title {
+        font-size: 2rem;
+    }
+    
+    .slide-title-featured {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content-featured {
+        padding: 2rem;
+    }
+    
+    .banner-title {
+        font-size: 1.5rem;
+    }
+    
+    .slider-nav-featured,
+    .banner-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
