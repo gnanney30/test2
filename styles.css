@@ -872,7 +872,7 @@ body {
 /* Old Page Hero Classes (for backward compatibility) */
 .page-hero {
     background: linear-gradient(135deg, var(--main) 0%, var(--dark-main) 100%);
-    padding: 8rem 3rem 6rem;
+    padding: 4rem 3rem 3rem !important;
     text-align: center;
     position: relative;
     margin-top: 73px;
@@ -886,7 +886,7 @@ body {
 
 .page-hero-title {
     font-family: 'IBM Plex Serif', serif;
-    font-size: 3.5rem;
+    font-size: 3.5rem !important;
     font-weight: 700;
     color: var(--white);
     margin-bottom: 1.5rem;
@@ -894,7 +894,7 @@ body {
 }
 
 .page-hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem !important;
     color: rgba(255,255,255,0.85);
     line-height: 1.7;
     max-width: 700px;
@@ -1326,23 +1326,4 @@ body {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    .hero-tag,
-.hero-tag-modern {
-    display: none !important;
-}
-    /* Thinner Hero Sections */
-.page-hero {
-    padding: 5rem 3rem 3rem !important;
-}
-
-.hero-fullscreen {
-    height: 70vh !important;
-}
-
-.page-hero-title {
-    font-size: 3rem !important;
-}
-
-.page-hero-subtitle {
-    font-size: 1rem !important;
 }
