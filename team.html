@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team | S3 Capital</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="team-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
+    <!-- Header -->
+    <header class="header" id="header">
         <div class="header-container">
             <a href="index.html" class="logo-container">
                 <svg class="logo-svg" viewBox="0 0 617.4 256.4" xmlns="http://www.w3.org/2000/svg">
@@ -35,70 +37,129 @@
         </div>
     </header>
 
-    <section class="page-hero">
+    <!-- Page Hero -->
+    <section class="page-hero" style="margin-top: 73px; padding: 4rem 3rem 3rem;">
         <div class="page-hero-content">
-            <h1 class="page-hero-title">Our Team</h1>
+            <h1 class="page-hero-title" style="font-size: 3.5rem;">Our Team</h1>
             <p class="page-hero-subtitle">
-                Led by experienced principals with deep market expertise and supported by a team of dedicated professionals.
+                Experienced professionals dedicated to delivering institutional-quality middle-market lending
             </p>
         </div>
     </section>
 
-    <section class="section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Leadership</span>
-                <h2 class="section-title">Principals</h2>
-                <p class="section-description">
-                    S3 Capital is led by Principals Joshua Crane and Robert Schwartz, who bring decades of combined experience in real estate finance and lending.
-                </p>
-            </div>
-            <div class="content-message" style="text-align: center; padding: 3rem 0;">
-                <p style="font-size: 1.1rem; color: var(--text-medium);">
-                    Detailed team bios and information coming soon.
-                </p>
-            </div>
-        </div>
-    </section>
+    <!-- Leadership - Principals -->
+    <section class="leadership-section">
+        <div class="container-narrow">
+            <h2 class="section-heading-team">Leadership</h2>
+            <div class="principals-grid">
+                <div class="principal-card">
+                    <div class="principal-image-placeholder">JC</div>
+                    <h3 class="principal-name">Joshua Crane</h3>
+                    <div class="principal-title">Co-Founder & Principal</div>
+                    <p class="principal-bio">
+                        Joshua Crane is co-founder and principal of Spruce and S3 Capital. Prior to founding S3 and Spruce Capital, he was at Irongate, where he developed the Trump International Hotel and Tower at Waikiki Beach Walk. Joshua began his career at Salomon Brothers in its Mergers and Acquisitions group.
+                    </p>
+                </div>
 
-    <section class="section expertise-section">
-        <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Our Platform</span>
-                <h2 class="section-title">Comprehensive In-House Expertise</h2>
-                <p class="section-description">
-                    Our integrated team of industry professionals ensures the success of every transaction from origination through final payment.
-                </p>
-            </div>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <div class="expertise-icon">🎯</div>
-                    <div class="expertise-name">Origination</div>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">📋</div>
-                    <div class="expertise-name">Underwriting</div>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">⚖️</div>
-                    <div class="expertise-name">Credit</div>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">🏗️</div>
-                    <div class="expertise-name">Construction</div>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">💼</div>
-                    <div class="expertise-name">Asset Management</div>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">💰</div>
-                    <div class="expertise-name">Finance</div>
+                <div class="principal-card">
+                    <div class="principal-image-placeholder">RS</div>
+                    <h3 class="principal-name">Robert Schwartz</h3>
+                    <div class="principal-title">Co-Founder & Principal</div>
+                    <p class="principal-bio">
+                        Robert Schwartz is co-founder and principal of Spruce and S3 Capital, and leads acquisitions, financing and day-to-day management for the firm. Prior to founding Spruce and S3 Capital, Robert helped run a successful family business. Robert began his career as an investment banker at Donaldson, Lufkin & Jenrette and UBS.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Executive Team -->
+    <section class="executive-section">
+        <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
+            <h2 class="section-heading-team">Executive Team</h2>
+            <div class="executive-grid">
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Matan Kurman</h4>
+                        <div class="team-card-role">Head of Investments</div>
+                    </div>
+                </div>
+
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Ari Kalton</h4>
+                        <div class="team-card-role">Chief Financial Officer</div>
+                    </div>
+                </div>
+
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Betty Valouktzis</h4>
+                        <div class="team-card-role">Chief Compliance Officer</div>
+                    </div>
+                </div>
+
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Michelle Fang</h4>
+                        <div class="team-card-role">Head of Global Marketing & IR</div>
+                    </div>
+                </div>
+
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Shawn Safdie</h4>
+                        <div class="team-card-role">Head of Origination</div>
+                    </div>
+                </div>
+
+                <div class="team-card-exec">
+                    <div class="team-card-header">
+                        <h4>Paul Foschi</h4>
+                        <div class="team-card-role">Head of Construction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Team Grid -->
+    <section class="team-section">
+        <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
+            <h2 class="section-heading-team">Team Members</h2>
+            <div class="team-grid">
+                <div class="team-card"><h4>Steven Jemal</h4><div class="team-card-role">Managing Director of Origination</div></div>
+                <div class="team-card"><h4>Alexander Wrede</h4><div class="team-card-role">Vice President</div></div>
+                <div class="team-card"><h4>Max Rothman</h4><div class="team-card-role">Vice President</div></div>
+                <div class="team-card"><h4>Nick Peragallo</h4><div class="team-card-role">Assistant Vice President</div></div>
+                <div class="team-card"><h4>Ryan Talgo</h4><div class="team-card-role">Assistant Vice President</div></div>
+                <div class="team-card"><h4>Jackson Gray</h4><div class="team-card-role">Senior Associate</div></div>
+                <div class="team-card"><h4>Marcos de Moraes</h4><div class="team-card-role">Senior Construction Manager</div></div>
+                <div class="team-card"><h4>Richard Racanelli</h4><div class="team-card-role">Senior Construction Associate</div></div>
+                <div class="team-card"><h4>Grayson Cherubino</h4><div class="team-card-role">Construction Associate</div></div>
+                <div class="team-card"><h4>Grace Nanney</h4><div class="team-card-role">Associate</div></div>
+                <div class="team-card"><h4>Matthew Stauber</h4><div class="team-card-role">Associate</div></div>
+                <div class="team-card"><h4>Clayton Whitton</h4><div class="team-card-role">Senior Construction Analyst</div></div>
+                <div class="team-card"><h4>Blake Shechtman</h4><div class="team-card-role">Senior Analyst</div></div>
+                <div class="team-card"><h4>Peter Gasparro</h4><div class="team-card-role">Senior Analyst</div></div>
+                <div class="team-card"><h4>Natalie Pedi</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Alex De Castro</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Kellen Furse</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Will Butz</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Alex Eversole</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Saul Pages</h4><div class="team-card-role">Analyst</div></div>
+                <div class="team-card"><h4>Joe Tages</h4><div class="team-card-role">Assistant Controller</div></div>
+                <div class="team-card"><h4>Fatnisa Begolli</h4><div class="team-card-role">Senior Fund Accountant</div></div>
+                <div class="team-card"><h4>Olga Lisina</h4><div class="team-card-role">Fund Accountant</div></div>
+                <div class="team-card"><h4>Tim Horan</h4><div class="team-card-role">Senior Fund Accountant</div></div>
+                <div class="team-card"><h4>Ben-Hemir Collado</h4><div class="team-card-role">Treasury Analyst</div></div>
+                <div class="team-card"><h4>Danielle Zalta</h4><div class="team-card-role">Fund Accountant</div></div>
+                <div class="team-card"><h4>Tanya Glibitskiy</h4><div class="team-card-role">HR Specialist / Office Manager</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div>
@@ -110,7 +171,7 @@
                     <path fill="currentColor" d="M582.7,138.4c22.9-3.5,27.6-19.5,27.6-33.9c0-26.8-16.4-43-59.4-43c-40,0-59.4,19.9-62.1,43.6c-0.3,1.5-0.4,3.4-0.5,5.1h30.4c0.1-1.7,0.2-3.4,0.5-5.1c1.6-10.1,9.3-18.3,30.8-18.3c22.1,0,29.2,6.9,29.6,15.6c0.2,1.6,0,3.2,0,6.3c0,14.4-4.7,19.9-30.4,19.9h-23.9v23.5h29.4c22.1,0,31.9,4.9,31.9,23.1c0,17.2-9.5,26-36.1,26c-22.9,0-33.5-7.1-35.1-19.1c-0.3-1.2-0.5-6.1-0.7-10.1h-30.6c0.2,4,0.5,8.9,0.6,10.8c2,25,20.3,43.6,65.7,43.6c45.8,0,66.7-16.6,66.9-41.2c0-2,0-11.4,0-13.8C617,153,607.4,140.4,582.7,138.4z"/>
                 </svg>
                 <p class="footer-description">
-                    S3 Capital is a leading real estate private equity firm focused on commercial real estate debt. Since 2013, we have originated over $8.2 billion across 820+ loans.
+                    S3 Capital is a leading real estate private equity firm focused on commercial real estate debt.
                 </p>
                 <div class="footer-contact">
                     535 Madison Avenue, 19th Floor<br/>
@@ -133,8 +194,8 @@
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="about.html#borrowers">For Borrowers</a></li>
-                    <li><a href="about.html#investors">For Investors</a></li>
+                    <li><a href="contact.html">Financing Solutions</a></li>
+                    <li><a href="contact.html">Investment Opportunities</a></li>
                     <li><a href="transactions.html">Portfolio</a></li>
                 </ul>
             </div>
@@ -153,6 +214,7 @@
             </div>
         </div>
     </footer>
+
     <script src="animations.js"></script>
 </body>
 </html>
