@@ -1330,3 +1330,19 @@ body {
 .hero-tag-modern {
     display: none !important;
 }
+    /* Thinner Hero Sections */
+.page-hero {
+    padding: 5rem 3rem 3rem !important;
+}
+
+.hero-fullscreen {
+    height: 70vh !important;
+}
+
+.page-hero-title {
+    font-size: 3rem !important;
+}
+
+.page-hero-subtitle {
+    font-size: 1rem !important;
+}
