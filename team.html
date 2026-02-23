@@ -9,6 +9,120 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Bio Slide-Out Panel ── */
+        .bio-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .bio-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .bio-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 480px;
+            max-width: 100vw;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .bio-panel.active {
+            transform: translateX(0);
+        }
+        .bio-panel-header {
+            padding: 2rem 2rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1;
+        }
+        .bio-panel-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            line-height: 1;
+            padding: 0.25rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .bio-panel-close:hover {
+            color: var(--text-dark);
+        }
+        .bio-panel-name {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0 0 0.25rem;
+            line-height: 1.2;
+        }
+        .bio-panel-title {
+            font-size: 0.85rem;
+            color: var(--main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .bio-panel-body {
+            padding: 2rem;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text-medium);
+            flex: 1;
+        }
+        .bio-panel-body p {
+            margin-bottom: 1.25rem;
+        }
+        .bio-panel-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Make cards clickable */
+        .principal-card,
+        .team-card-exec,
+        .team-card {
+            cursor: pointer;
+        }
+
+        /* Click hint */
+        .bio-hint {
+            font-size: 0.75rem;
+            color: var(--main);
+            margin-top: 0.75rem;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+        .team-card .bio-hint,
+        .team-card-exec .bio-hint {
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .bio-panel {
+                width: 100vw;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -28,7 +142,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
-                    <li><a href="news.html">News & Insights</a></li>
+                    <li><a href="news.html">News &amp; Insights</a></li>
                     <li><a href="team.html" class="active">Team</a></li>
                     <li><a href="https://app.junipersquare.com/i/sprucecap/" class="investor-login">Investor Login</a></li>
                     <li><a href="contact.html" class="nav-cta">Contact</a></li>
@@ -52,22 +166,24 @@
         <div class="container-narrow">
             <h2 class="section-heading-team">Leadership</h2>
             <div class="principals-grid">
-                <div class="principal-card">
+                <div class="principal-card" onclick="openBio('Joshua Crane', 'Co-Founder &amp; Principal', 'joshua')">
                     <div class="principal-image-placeholder">JC</div>
                     <h3 class="principal-name">Joshua Crane</h3>
-                    <div class="principal-title">Co-Founder & Principal</div>
+                    <div class="principal-title">Co-Founder &amp; Principal</div>
                     <p class="principal-bio">
-                        Joshua Crane is co-founder and principal of Spruce and S3 Capital. Prior to founding S3 and Spruce Capital, he was at Irongate, where he developed the Trump International Hotel and Tower at Waikiki Beach Walk. Joshua began his career at Salomon Brothers in its Mergers and Acquisitions group.
+                        Joshua Crane is co-founder and principal of Spruce and S3 Capital. Prior to founding S3 and Spruce Capital, he was at Irongate, where he developed the Trump International Hotel and Tower at Waikiki Beach Walk.
                     </p>
+                    <div class="bio-hint">Read full bio →</div>
                 </div>
 
-                <div class="principal-card">
+                <div class="principal-card" onclick="openBio('Robert Schwartz', 'Co-Founder &amp; Principal', 'robert')">
                     <div class="principal-image-placeholder">RS</div>
                     <h3 class="principal-name">Robert Schwartz</h3>
-                    <div class="principal-title">Co-Founder & Principal</div>
+                    <div class="principal-title">Co-Founder &amp; Principal</div>
                     <p class="principal-bio">
-                        Robert Schwartz is co-founder and principal of Spruce and S3 Capital, and leads acquisitions, financing and day-to-day management for the firm. Prior to founding Spruce and S3 Capital, Robert helped run a successful family business. Robert began his career as an investment banker at Donaldson, Lufkin & Jenrette and UBS.
+                        Robert Schwartz is co-founder and principal of Spruce and S3 Capital, and leads acquisitions, financing and day-to-day management for the firm.
                     </p>
+                    <div class="bio-hint">Read full bio →</div>
                 </div>
             </div>
         </div>
@@ -78,45 +194,46 @@
         <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
             <h2 class="section-heading-team">Executive Team</h2>
             <div class="executive-grid">
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Matan Kurman', 'Head of Investments', 'matan')">
                     <div class="team-card-header">
                         <h4>Matan Kurman</h4>
                         <div class="team-card-role">Head of Investments</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
-
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Ari Kalton', 'Chief Financial Officer', 'ari')">
                     <div class="team-card-header">
                         <h4>Ari Kalton</h4>
                         <div class="team-card-role">Chief Financial Officer</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
-
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Betty Valouktzis', 'Chief Compliance Officer', 'betty')">
                     <div class="team-card-header">
                         <h4>Betty Valouktzis</h4>
                         <div class="team-card-role">Chief Compliance Officer</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
-
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Michelle Fang', 'Head of Global Marketing &amp; IR', 'michelle')">
                     <div class="team-card-header">
                         <h4>Michelle Fang</h4>
-                        <div class="team-card-role">Head of Global Marketing & IR</div>
+                        <div class="team-card-role">Head of Global Marketing &amp; IR</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
-
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Shawn Safdie', 'Head of Origination', 'shawn')">
                     <div class="team-card-header">
                         <h4>Shawn Safdie</h4>
                         <div class="team-card-role">Head of Origination</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
-
-                <div class="team-card-exec">
+                <div class="team-card-exec" onclick="openBio('Paul Foschi', 'Head of Construction', 'paul')">
                     <div class="team-card-header">
                         <h4>Paul Foschi</h4>
                         <div class="team-card-role">Head of Construction</div>
+                        <div class="bio-hint">Read bio →</div>
                     </div>
                 </div>
             </div>
@@ -128,36 +245,52 @@
         <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
             <h2 class="section-heading-team">Team Members</h2>
             <div class="team-grid">
-                <div class="team-card"><h4>Steven Jemal</h4><div class="team-card-role">Managing Director of Origination</div></div>
-                <div class="team-card"><h4>Alexander Wrede</h4><div class="team-card-role">Vice President</div></div>
-                <div class="team-card"><h4>Max Rothman</h4><div class="team-card-role">Vice President</div></div>
-                <div class="team-card"><h4>Nick Peragallo</h4><div class="team-card-role">Assistant Vice President</div></div>
-                <div class="team-card"><h4>Ryan Talgo</h4><div class="team-card-role">Assistant Vice President</div></div>
-                <div class="team-card"><h4>Jackson Gray</h4><div class="team-card-role">Senior Associate</div></div>
-                <div class="team-card"><h4>Marcos de Moraes</h4><div class="team-card-role">Senior Construction Manager</div></div>
-                <div class="team-card"><h4>Richard Racanelli</h4><div class="team-card-role">Senior Construction Associate</div></div>
-                <div class="team-card"><h4>Grayson Cherubino</h4><div class="team-card-role">Construction Associate</div></div>
-                <div class="team-card"><h4>Grace Nanney</h4><div class="team-card-role">Associate</div></div>
-                <div class="team-card"><h4>Matthew Stauber</h4><div class="team-card-role">Associate</div></div>
-                <div class="team-card"><h4>Clayton Whitton</h4><div class="team-card-role">Senior Construction Analyst</div></div>
-                <div class="team-card"><h4>Blake Shechtman</h4><div class="team-card-role">Senior Analyst</div></div>
-                <div class="team-card"><h4>Peter Gasparro</h4><div class="team-card-role">Senior Analyst</div></div>
-                <div class="team-card"><h4>Natalie Pedi</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Alex De Castro</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Kellen Furse</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Will Butz</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Alex Eversole</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Saul Pages</h4><div class="team-card-role">Analyst</div></div>
-                <div class="team-card"><h4>Joe Tages</h4><div class="team-card-role">Assistant Controller</div></div>
-                <div class="team-card"><h4>Fatnisa Begolli</h4><div class="team-card-role">Senior Fund Accountant</div></div>
-                <div class="team-card"><h4>Olga Lisina</h4><div class="team-card-role">Fund Accountant</div></div>
-                <div class="team-card"><h4>Tim Horan</h4><div class="team-card-role">Senior Fund Accountant</div></div>
-                <div class="team-card"><h4>Ben-Hemir Collado</h4><div class="team-card-role">Treasury Analyst</div></div>
-                <div class="team-card"><h4>Danielle Zalta</h4><div class="team-card-role">Fund Accountant</div></div>
-                <div class="team-card"><h4>Tanya Glibitskiy</h4><div class="team-card-role">HR Specialist / Office Manager</div></div>
+                <div class="team-card" onclick="openBio('Steven Jemal', 'Managing Director of Origination', 'steven')"><h4>Steven Jemal</h4><div class="team-card-role">Managing Director of Origination</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Alexander Wrede', 'Vice President', 'alexander')"><h4>Alexander Wrede</h4><div class="team-card-role">Vice President</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Max Rothman', 'Vice President', 'max')"><h4>Max Rothman</h4><div class="team-card-role">Vice President</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Nick Peragallo', 'Assistant Vice President', 'nick')"><h4>Nick Peragallo</h4><div class="team-card-role">Assistant Vice President</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Ryan Talgo', 'Assistant Vice President', 'ryan')"><h4>Ryan Talgo</h4><div class="team-card-role">Assistant Vice President</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Jackson Gray', 'Senior Associate', 'jackson')"><h4>Jackson Gray</h4><div class="team-card-role">Senior Associate</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Marcos de Moraes', 'Senior Construction Manager', 'marcos')"><h4>Marcos de Moraes</h4><div class="team-card-role">Senior Construction Manager</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Richard Racanelli', 'Senior Construction Associate', 'richard')"><h4>Richard Racanelli</h4><div class="team-card-role">Senior Construction Associate</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Grayson Cherubino', 'Construction Associate', 'grayson')"><h4>Grayson Cherubino</h4><div class="team-card-role">Construction Associate</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Grace Nanney', 'Associate', 'grace')"><h4>Grace Nanney</h4><div class="team-card-role">Associate</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Matthew Stauber', 'Associate', 'matthew')"><h4>Matthew Stauber</h4><div class="team-card-role">Associate</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Clayton Whitton', 'Senior Construction Analyst', 'clayton')"><h4>Clayton Whitton</h4><div class="team-card-role">Senior Construction Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Blake Shechtman', 'Senior Analyst', 'blake')"><h4>Blake Shechtman</h4><div class="team-card-role">Senior Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Peter Gasparro', 'Senior Analyst', 'peter')"><h4>Peter Gasparro</h4><div class="team-card-role">Senior Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Natalie Pedi', 'Analyst', 'natalie')"><h4>Natalie Pedi</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Alex De Castro', 'Analyst', 'alexdc')"><h4>Alex De Castro</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Kellen Furse', 'Analyst', 'kellen')"><h4>Kellen Furse</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Will Butz', 'Analyst', 'will')"><h4>Will Butz</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Alex Eversole', 'Analyst', 'alexe')"><h4>Alex Eversole</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Saul Pages', 'Analyst', 'saul')"><h4>Saul Pages</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Aryeh Abergel', 'Analyst', 'aryeh')"><h4>Aryeh Abergel</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Joe Tages', 'Assistant Controller', 'joe')"><h4>Joe Tages</h4><div class="team-card-role">Assistant Controller</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Fatnisa Begolli', 'Senior Fund Accountant', 'fatnisa')"><h4>Fatnisa Begolli</h4><div class="team-card-role">Senior Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Olga Lisina', 'Fund Accountant', 'olga')"><h4>Olga Lisina</h4><div class="team-card-role">Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Tim Horan', 'Senior Fund Accountant', 'tim')"><h4>Tim Horan</h4><div class="team-card-role">Senior Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Ben-Hemir Collado', 'Treasury Analyst', 'ben')"><h4>Ben-Hemir Collado</h4><div class="team-card-role">Treasury Analyst</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Danielle Zalta', 'Fund Accountant', 'danielle')"><h4>Danielle Zalta</h4><div class="team-card-role">Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
+                <div class="team-card" onclick="openBio('Tanya Glibitskiy', 'HR Specialist / Office Manager', 'tanya')"><h4>Tanya Glibitskiy</h4><div class="team-card-role">HR Specialist / Office Manager</div><div class="bio-hint">Read bio →</div></div>
             </div>
         </div>
     </section>
+
+    <!-- Bio Overlay -->
+    <div class="bio-overlay" id="bioOverlay" onclick="closeBio()"></div>
+
+    <!-- Bio Slide Panel -->
+    <div class="bio-panel" id="bioPanel">
+        <div class="bio-panel-header">
+            <div>
+                <div class="bio-panel-name" id="bioPanelName"></div>
+                <div class="bio-panel-title" id="bioPanelTitle"></div>
+            </div>
+            <button class="bio-panel-close" onclick="closeBio()">✕</button>
+        </div>
+        <div class="bio-panel-body" id="bioPanelBody"></div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -170,15 +303,12 @@
                     <polygon fill="currentColor" points="207.7,133.9 86.9,256.4 253.4,213.1"/>
                     <path fill="currentColor" d="M582.7,138.4c22.9-3.5,27.6-19.5,27.6-33.9c0-26.8-16.4-43-59.4-43c-40,0-59.4,19.9-62.1,43.6c-0.3,1.5-0.4,3.4-0.5,5.1h30.4c0.1-1.7,0.2-3.4,0.5-5.1c1.6-10.1,9.3-18.3,30.8-18.3c22.1,0,29.2,6.9,29.6,15.6c0.2,1.6,0,3.2,0,6.3c0,14.4-4.7,19.9-30.4,19.9h-23.9v23.5h29.4c22.1,0,31.9,4.9,31.9,23.1c0,17.2-9.5,26-36.1,26c-22.9,0-33.5-7.1-35.1-19.1c-0.3-1.2-0.5-6.1-0.7-10.1h-30.6c0.2,4,0.5,8.9,0.6,10.8c2,25,20.3,43.6,65.7,43.6c45.8,0,66.7-16.6,66.9-41.2c0-2,0-11.4,0-13.8C617,153,607.4,140.4,582.7,138.4z"/>
                 </svg>
-                <p class="footer-description">
-                    S3 Capital is a leading real estate private equity firm focused on commercial real estate debt.
-                </p>
+                <p class="footer-description">S3 Capital is a leading real estate private equity firm focused on commercial real estate debt. Since 2013, we have originated over $8.2 billion across 820+ loans.</p>
                 <div class="footer-contact">
                     535 Madison Avenue, 19th Floor<br/>
-                    New York, NY 10022<br/>
-                    <br/>
+                    New York, NY 10022<br/><br/>
                     T: +1 (212) 300-8800<br/>
-                    E: info@s3cap.com
+                    E: <a href="mailto:info@s3cap.com">info@s3cap.com</a>
                 </div>
             </div>
             <div class="footer-section">
@@ -187,15 +317,15 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="team.html">Team</a></li>
                     <li><a href="transactions.html">Transactions</a></li>
-                    <li><a href="news.html">News & Insights</a></li>
+                    <li><a href="news.html">News &amp; Insights</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
                 <ul class="footer-links">
-                    <li><a href="contact.html">Financing Solutions</a></li>
-                    <li><a href="contact.html">Investment Opportunities</a></li>
+                    <li><a href="about.html#borrowers">For Borrowers</a></li>
+                    <li><a href="about.html#investors">For Investors</a></li>
                     <li><a href="transactions.html">Portfolio</a></li>
                 </ul>
             </div>
@@ -216,5 +346,64 @@
     </footer>
 
     <script src="animations.js"></script>
+    <script>
+        const bios = {
+            joshua: `<p>Joshua Crane is Co-Founder and Principal of S3 Capital. Prior to founding S3, Joshua worked at Irongate, where he developed the Trump International Hotel and Tower at Waikiki Beach Walk.</p><p>He also worked at Stellar Management, where he was involved in the acquisition of Independence Plaza, a 1,330-unit rental building in New York City's Tribeca neighborhood, and 2,000 units in Washington, D.C.</p><p>Joshua began his career at Salomon Brothers in its M&amp;A group and earned a degree from the Wharton School at the University of Pennsylvania.</p>`,
+            robert: `<p>Robert Schwartz is Co-Founder and Principal of S3 Capital. Prior to founding S3, Robert helped run a successful family business where he established the family's real estate investment program.</p><p>He began his career in investment banking at Donaldson, Lufkin &amp; Jenrette and UBS in the Financial Institution Coverage groups. Robert graduated from the Wharton School at the University of Pennsylvania and serves on the Executive Board.</p>`,
+            matan: `<p>Matan Kurman is the Head of Investments at S3 Capital and oversees the firm's investment strategy. He joined S3 at inception in July 2014 to manage day-to-day operations and underwriting.</p><p>Prior to S3, Matan worked in acquisitions at Brookwood Financial Partners and served as an Air Force Pilot (Captain). He earned his undergraduate degree from Ben-Gurion University of the Negev with a B.A. in Political Science, and his MBA from Brandeis University. He is fluent in English and Hebrew.</p>`,
+            ari: `<p>Ari Kalton is the Chief Financial Officer at S3 Capital and oversees financial reporting, tax, and accounting for the firm's real estate debt funds. Ari is also responsible for implementing S3 Capital's overall compliance program.</p><p>Prior to joining S3 Capital, Ari served as Controller for DH Property Holdings and as a Director in the Alternative Investments Assurance Practice at PricewaterhouseCoopers. Ari is a New York State Certified Public Accountant and earned a B.S. in Accounting from Yeshiva University.</p>`,
+            betty: `<p>Betty Valouktzis joined S3 Capital as Chief Compliance Officer in July 2025 and works with the firm in an outsourced capacity through Optima Partners.</p><p>Betty provides compliance guidance and support to the firm and brings extensive experience in U.S. securities law, regulatory compliance, and corporate governance.</p>`,
+            michelle: `<p>Michelle Fang joined S3 Capital in December 2024 and leads global marketing and investor relations, bringing S3's investment capabilities and private credit funds to institutional investors. Michelle has 30 years of experience in the institutional investment management industry.</p><p>Prior to S3 Capital, she was a Senior Managing Director at Principal Real Estate, where she led global marketing and product development and served on the firm's management team. Previously, she held real estate product and marketing roles at Metropolitan Real Estate Equity Management (now part of Carlyle) and GE Asset Management, and earlier worked in marketing and product management at Bankers Trust and SEI Investments.</p>`,
+            shawn: `<p>Shawn Safdie joined S3 Capital at inception to lead loan origination, business development, structuring, and underwriting. Shawn has more than a decade of experience in real estate credit, particularly bridge lending, and excels at developing and maintaining relationships.</p><p>He earned a B.A. in Business Management &amp; Finance from CUNY Brooklyn College.</p>`,
+            paul: `<p>Paul Foschi joined S3 Capital in early 2024 and oversees the firm's construction portfolio and draw process. Paul brings more than 30 years of hands-on construction experience and previously served as Senior Project Executive at a major New York construction company for over a decade.</p><p>He has directed high-rise new construction and large-scale renovation projects across hospitality, multifamily residential, commercial office, interiors, and laboratory facilities. Paul earned a Bachelor of Architecture from Georgia Tech, where he was a Tau Sigma Delta Honoree.</p>`,
+            steven: `<p>Steven Jemal joined S3 Capital in October 2016 and focuses on originating and underwriting loans for the firm. Prior to S3 Capital, Steven was an Originator and Acquisitions Associate at Hirshmark Capital, where he sourced and underwrote debt and equity investments.</p><p>He earned a B.S. in Finance and Management from Yeshiva University's Sy Syms School of Business.</p>`,
+            alexander: `<p>Alexander Wrede leads underwriting and asset management for S3 Capital's Larger Balance Loan Fund Series. He joined S3 Capital in 2018 as an Analyst and has played a key role in the firm's growth over the past eight years.</p><p>In his current role, Alexander is responsible for underwriting and evaluating new and existing loans, overseeing the construction portfolio, and supporting day-to-day operations. Prior to joining S3 Capital, Alexander earned a B.S. in Business Administration and Finance from Bucknell University's Freeman College of Management.</p>`,
+            max: `<p>Max Rothman joined S3 Capital in September 2024 and is responsible for underwriting new and existing loans and supporting day-to-day operations. Prior to joining S3 Capital, Max was an Associate at Wells Fargo in the Real Estate Banking Group.</p><p>He earned a B.A. in Economics from the University of Michigan and an MBA from the University of Chicago Booth School of Business.</p>`,
+            nick: `<p>Nick Peragallo joined S3 Capital in February 2022 and supports underwriting for new and existing loans, fund operations, and portfolio oversight. Prior to S3 Capital, Nick worked at Apprise by Walker &amp; Dunlop as an Associate Commercial Real Estate Appraiser.</p><p>He earned a B.S. in Finance and Management from Boston College's Carroll School of Management.</p>`,
+            ryan: `<p>Ryan Talgo joined S3 Capital in January 2025 and focuses on underwriting new and existing loans and supporting fund operations. Prior to S3 Capital, Ryan was an Associate at Churchill Real Estate, where he worked in direct lending and warehouse financing. He also completed internships at New York Life and JLL.</p><p>Ryan earned a Bachelor of Business Administration with a specialization in Accounting from George Washington University.</p>`,
+            jackson: `<p>Jackson Gray joined S3 Capital in June 2022 and is responsible for underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Jackson interned at Blackthorne Capital Management, a quantitative hedge fund focused on commodities, futures, and global indices.</p><p>He earned a B.B.A. in Finance and Real Estate from the Wisconsin School of Business.</p>`,
+            marcos: `<p>Marcos De Moraes joined S3 Capital in June 2025 and brings over 15 years of experience in construction and real estate development, specializing in high-rise and complex urban projects. He has managed the construction of supertall residential towers in Manhattan and Downtown Brooklyn, contributing to some of New York City's most notable developments.</p><p>Prior to S3 Capital, Marcos held senior roles at a leading construction management firm. He earned a degree in Mechanical Engineering and completed a specialization in Construction Management at Columbia University. Marcos is also a certified Project Management Professional (PMP).</p>`,
+            richard: `<p>Richard Racanelli joined S3 Capital in 2022 and is responsible for underwriting and evaluating new and existing loans, overseeing the construction portfolio, and supporting day-to-day operations. Prior to S3 Capital, Richard worked at Racanelli Construction Company as an Assistant Project Superintendent.</p><p>He earned a B.S. in Management from Boston College with concentrations in Finance and Management &amp; Leadership.</p>`,
+            grayson: `<p>Grayson Cherubino joined S3 Capital in 2024 and is responsible for overseeing the construction portfolio, conducting site inspections, and supporting day-to-day operations. Prior to S3 Capital, Grayson worked at John Moriarty &amp; Associates as a Field Superintendent.</p><p>He earned a B.S. in Business Administration from Bucknell University's Freeman College of Management, where he was elected captain of the football team.</p>`,
+            grace: `<p>Grace Nanney joined S3 Capital in September 2024 and supports the Marketing &amp; Investor Relations team. Prior to S3 Capital, Grace worked as a Client Relationship Executive on the Real Estate Team at Oxford Economics and began her career as an Associate in the Capital Markets Group at AlphaSights.</p><p>She graduated cum laude from Vanderbilt University with a dual degree in Human &amp; Organizational Development and Communication Studies.</p>`,
+            matthew: `<p>Matthew Stauber joined S3 Capital in November 2023 and assists with underwriting new and existing loans, fund operations, and portfolio oversight. Prior to S3 Capital, Matthew worked at Circle Industrial as an Investment Analyst.</p><p>He graduated magna cum laude from Wake Forest University with a B.S. in Business and Enterprise Management.</p>`,
+            clayton: `<p>Clayton Whitton joined S3 Capital in July 2024 and supports the construction team by overseeing the firm's construction portfolio, conducting site inspections, and assisting with day-to-day operations. Prior to S3 Capital, Clayton worked as a Project Manager in the technology sector.</p><p>He earned a B.A. in Economics and Political Science from Boston College.</p>`,
+            blake: `<p>Blake Shechtman joined S3 Capital in January 2026 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Blake worked at Green Courte Partners in real estate private equity acquisitions and at The Blackstone Group in asset management.</p><p>He earned a B.A. in Economics from the University of Michigan with a concentration in Sport Policy and Analytics.</p>`,
+            peter: `<p>Peter Gasparro joined S3 Capital in July 2024 and is responsible for underwriting new loans and supporting day-to-day operations. Prior to S3 Capital, Peter interned at One William Street Real Estate Finance, an alternative lender.</p><p>He earned a B.S. in Management with a concentration in Finance from Boston College's Carroll School of Management.</p>`,
+            natalie: `<p>Natalie Pedi joined S3 Capital in July 2024 and is responsible for underwriting new and existing loans across the firm's portfolio.</p>`,
+            alexdc: `<p>Alex de Castro joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Alex held roles in real estate acquisitions and asset management at The Dermot Company and Steers Private Fund, as well as corporate finance at Starwood Capital Group.</p><p>He earned a B.S. in Business Administration with a focus in Finance from Georgetown University, where he was part of the Global Business Fellows program.</p>`,
+            kellen: `<p>Kellen Furse joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Kellen interned at Strategas Securities in equity research and held data analytics roles at the Massachusetts Department of Public Health and Betting Hero.</p><p>He earned a B.S. in Finance from Wake Forest University.</p>`,
+            will: `<p>Will Butz joined S3 Capital in January 2026 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Will was an analyst with Brean Strategic Advisors in New York, where he supported project-finance risk analysis, evaluated MBS and loan portfolios, and built performance reporting tools. He also held roles at Dakota Investments and Innovation Capital Investment Bankers.</p><p>Will earned a B.A. in Financial Economics from Columbia University, where he was a member of the varsity football team.</p>`,
+            alexe: `<p>Alex Eversole joined S3 Capital in July 2025 and supports the Marketing &amp; Investor Relations team. Prior to S3 Capital, Alex gained experience in commercial real estate finance and development through internships at Eastdil Secured and Stanford University's Land, Buildings &amp; Real Estate group (LBRE).</p><p>She earned a B.A. in Political Science from UCLA, where she served as Co-President of the Bruin Real Estate Association.</p>`,
+            saul: `<p>Saul Pages joined S3 Capital in July 2025 and supports the origination team. Prior to S3 Capital, Saul was a Branch Manager at MCM Holdings, Inc., specializing in mortgage lending.</p>`,
+            aryeh: `<p>Aryeh Abergel joined S3 Capital in February 2026 and supports the origination team. Prior to S3 Capital, Aryeh was a Private Banking Intern at Safra National Bank and an Acquisitions Analyst at KCore Holdings.</p><p>He earned a B.S. in Finance from Yeshiva University's Sy Syms School of Business.</p>`,
+            joe: `<p>Joseph Tages joined S3 Capital in May 2022 and serves as Assistant Controller. Prior to S3 Capital, Joseph worked in public accounting for three years at CBIZ/Marks Paneth.</p><p>He earned both his undergraduate and master's degrees in accounting from Pace University.</p>`,
+            fatnisa: `<p>Fatnisa Begolli joined S3 Capital in June 2025 as a Senior Fund Accountant. She earned a B.S. in Accounting from the University of Prishtina in Kosovo, where she received a full merit-based scholarship.</p><p>Fatnisa previously served as Associate Director in the Alternative Investments division at Oppenheimer &amp; Co., focusing on fund accounting for hedge funds and private equity funds. She has passed the CFA Level I exam and is fluent in English, Albanian, and Spanish.</p>`,
+            olga: `<p>Olga Lisina joined S3 Capital as a Fund Accountant in January 2017. Prior to joining S3, she worked as a Payroll Manager and Accountant at Branded Restaurants USA and as a bank teller at Santander Bank.</p><p>She received her BBA in Finance from Baruch College of CUNY and a Bachelor of Engineering from Ukrainian Academy of Printing. She is fluent in Russian and Ukrainian.</p>`,
+            tim: `<p>Tim Horan joined S3 Capital in December 2025 as a Senior Fund Accountant. Prior to S3 Capital, Tim was a Senior Associate at New York Life Real Estate Investors in the equity accounting group.</p><p>He earned a BBA in Finance from Saint Bonaventure University.</p>`,
+            ben: `<p>Ben-Hemir Collado joined S3 Capital in April 2025 as a Treasury Analyst. Prior to S3 Capital, Ben worked as a Fund Accountant at Banner Ridge Partners and as an Internal Auditor at Daiwa Capital Markets America Inc.</p><p>He holds a BBA in Accounting from Baruch College of CUNY and is completing an M.S. in Accountancy to fulfill CPA licensure requirements.</p>`,
+            danielle: `<p>Danielle Zalta joined S3 Capital in November 2025 as a Fund Accountant. Prior to S3 Capital, Danielle was a Senior Associate in the Assurance Practice at PricewaterhouseCoopers.</p><p>She holds both a B.S. and an M.S. in Accounting from the University at Buffalo.</p>`,
+            tanya: `<p>Tanya Glibitskiy joined Spruce Capital in 2018 and serves as Office and Human Resources Manager as well as Executive Assistant. Prior to Spruce Capital, Tanya worked at Riverstone Holdings in New York and FGS Consulting in Luxembourg.</p><p>She earned a B.S. in Business Management from CUNY College of Staten Island.</p>`,
+        };
+
+        function openBio(name, title, key) {
+            document.getElementById('bioPanelName').textContent = name;
+            document.getElementById('bioPanelTitle').innerHTML = title;
+            document.getElementById('bioPanelBody').innerHTML = bios[key] || `<p>${name} is a member of the S3 Capital team.</p>`;
+            document.getElementById('bioOverlay').classList.add('active');
+            document.getElementById('bioPanel').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBio() {
+            document.getElementById('bioOverlay').classList.remove('active');
+            document.getElementById('bioPanel').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeBio();
+        });
+    </script>
 </body>
 </html>
