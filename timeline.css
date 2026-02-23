@@ -45,7 +45,7 @@
 .timeline-events::before {
     content: '';
     position: absolute;
-    left: 120px;
+    left: 160px;
     top: 0;
     bottom: 0;
     width: 2px;
@@ -57,7 +57,7 @@
 .timeline-event {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 2.5rem;
     padding: 0 0 3rem 0;
     position: relative;
 }
@@ -68,7 +68,8 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--main);
-    min-width: 100px;
+    min-width: 140px;
+    max-width: 140px;
     text-align: right;
     padding-top: 1.1rem;
     flex-shrink: 0;
@@ -78,7 +79,7 @@
 .timeline-event::before {
     content: '';
     position: absolute;
-    left: 114px;
+    left: 154px;
     top: 1.35rem;
     width: 14px;
     height: 14px;
