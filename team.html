@@ -9,120 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* ── Bio Slide-Out Panel ── */
-        .bio-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.45);
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .bio-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        .bio-panel {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 480px;
-            max-width: 100vw;
-            height: 100vh;
-            background: var(--white);
-            z-index: 1001;
-            transform: translateX(100%);
-            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        .bio-panel.active {
-            transform: translateX(0);
-        }
-        .bio-panel-header {
-            padding: 2rem 2rem 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            position: sticky;
-            top: 0;
-            background: var(--white);
-            z-index: 1;
-        }
-        .bio-panel-close {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-medium);
-            line-height: 1;
-            padding: 0.25rem;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
-        }
-        .bio-panel-close:hover {
-            color: var(--text-dark);
-        }
-        .bio-panel-name {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin: 0 0 0.25rem;
-            line-height: 1.2;
-        }
-        .bio-panel-title {
-            font-size: 0.85rem;
-            color: var(--main);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .bio-panel-body {
-            padding: 2rem;
-            font-size: 1rem;
-            line-height: 1.85;
-            color: var(--text-medium);
-            flex: 1;
-        }
-        .bio-panel-body p {
-            margin-bottom: 1.25rem;
-        }
-        .bio-panel-body p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Make cards clickable */
-        .principal-card,
-        .team-card-exec,
-        .team-card {
-            cursor: pointer;
-        }
-
-        /* Click hint */
-        .bio-hint {
-            font-size: 0.75rem;
-            color: var(--main);
-            margin-top: 0.75rem;
-            font-weight: 500;
-            opacity: 0.8;
-        }
-        .team-card .bio-hint,
-        .team-card-exec .bio-hint {
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .bio-panel {
-                width: 100vw;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -155,124 +41,282 @@
     <section class="page-hero" style="margin-top: 73px; padding: 4rem 3rem 3rem;">
         <div class="page-hero-content">
             <h1 class="page-hero-title" style="font-size: 3.5rem;">Our Team</h1>
-            <p class="page-hero-subtitle">
-                Experienced professionals dedicated to delivering institutional-quality middle-market lending
-            </p>
+            <p class="page-hero-subtitle">Experienced professionals dedicated to delivering institutional-quality middle-market lending</p>
         </div>
     </section>
 
-    <!-- Leadership - Principals -->
-    <section class="leadership-section">
-        <div class="container-narrow">
-            <h2 class="section-heading-team">Leadership</h2>
-            <div class="principals-grid">
-                <div class="principal-card" onclick="openBio('Joshua Crane', 'Co-Founder &amp; Principal', 'joshua')">
-                    <div class="principal-image-placeholder">JC</div>
-                    <h3 class="principal-name">Joshua Crane</h3>
-                    <div class="principal-title">Co-Founder &amp; Principal</div>
-                    <p class="principal-bio">
-                        Joshua Crane is co-founder and principal of Spruce and S3 Capital. Prior to founding S3 and Spruce Capital, he was at Irongate, where he developed the Trump International Hotel and Tower at Waikiki Beach Walk.
-                    </p>
-                    <div class="bio-hint">Read full bio →</div>
+    <!-- Principals -->
+    <section class="dept-section principals-section">
+        <div class="dept-container">
+            <div class="dept-label">Leadership</div>
+            <div class="dept-title">Principals</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Joshua Crane', 'Co-Founder &amp; Principal', 'joshua')">
+                    <div class="member-initials">JC</div>
+                    <div class="member-name">Joshua Crane</div>
+                    <div class="member-role">Co-Founder &amp; Principal</div>
+                    <div class="member-hint">Read full bio →</div>
                 </div>
-
-                <div class="principal-card" onclick="openBio('Robert Schwartz', 'Co-Founder &amp; Principal', 'robert')">
-                    <div class="principal-image-placeholder">RS</div>
-                    <h3 class="principal-name">Robert Schwartz</h3>
-                    <div class="principal-title">Co-Founder &amp; Principal</div>
-                    <p class="principal-bio">
-                        Robert Schwartz is co-founder and principal of Spruce and S3 Capital, and leads acquisitions, financing and day-to-day management for the firm.
-                    </p>
-                    <div class="bio-hint">Read full bio →</div>
+                <div class="member-card is-leader" onclick="openBio('Robert Schwartz', 'Co-Founder &amp; Principal', 'robert')">
+                    <div class="member-initials">RS</div>
+                    <div class="member-name">Robert Schwartz</div>
+                    <div class="member-role">Co-Founder &amp; Principal</div>
+                    <div class="member-hint">Read full bio →</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Executive Team -->
-    <section class="executive-section">
-        <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
-            <h2 class="section-heading-team">Executive Team</h2>
-            <div class="executive-grid">
-                <div class="team-card-exec" onclick="openBio('Matan Kurman', 'Head of Investments', 'matan')">
-                    <div class="team-card-header">
-                        <h4>Matan Kurman</h4>
-                        <div class="team-card-role">Head of Investments</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
+    <!-- Origination -->
+    <section class="dept-section">
+        <div class="dept-container">
+            <div class="dept-label">Department</div>
+            <div class="dept-title">Origination</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Shawn Safdie', 'Head of Origination', 'shawn')">
+                    <div class="member-initials">SS</div>
+                    <div class="member-name">Shawn Safdie</div>
+                    <div class="member-role">Head of Origination</div>
+                    <div class="member-hint">Read bio →</div>
                 </div>
-                <div class="team-card-exec" onclick="openBio('Ari Kalton', 'Chief Financial Officer', 'ari')">
-                    <div class="team-card-header">
-                        <h4>Ari Kalton</h4>
-                        <div class="team-card-role">Chief Financial Officer</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
+                <div class="member-card is-leader" onclick="openBio('Steven Jemal', 'Managing Director of Origination', 'steven')">
+                    <div class="member-initials">SJ</div>
+                    <div class="member-name">Steven Jemal</div>
+                    <div class="member-role">Managing Director of Origination</div>
+                    <div class="member-hint">Read bio →</div>
                 </div>
-                <div class="team-card-exec" onclick="openBio('Betty Valouktzis', 'Chief Compliance Officer', 'betty')">
-                    <div class="team-card-header">
-                        <h4>Betty Valouktzis</h4>
-                        <div class="team-card-role">Chief Compliance Officer</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
+                <div class="member-card" onclick="openBio('Saul Pages', 'Analyst', 'saul')">
+                    <div class="member-initials">SP</div>
+                    <div class="member-name">Saul Pages</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
                 </div>
-                <div class="team-card-exec" onclick="openBio('Michelle Fang', 'Head of Global Marketing &amp; IR', 'michelle')">
-                    <div class="team-card-header">
-                        <h4>Michelle Fang</h4>
-                        <div class="team-card-role">Head of Global Marketing &amp; IR</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
-                </div>
-                <div class="team-card-exec" onclick="openBio('Shawn Safdie', 'Head of Origination', 'shawn')">
-                    <div class="team-card-header">
-                        <h4>Shawn Safdie</h4>
-                        <div class="team-card-role">Head of Origination</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
-                </div>
-                <div class="team-card-exec" onclick="openBio('Paul Foschi', 'Head of Construction', 'paul')">
-                    <div class="team-card-header">
-                        <h4>Paul Foschi</h4>
-                        <div class="team-card-role">Head of Construction</div>
-                        <div class="bio-hint">Read bio →</div>
-                    </div>
+                <div class="member-card" onclick="openBio('Aryeh Abergel', 'Analyst', 'aryeh')">
+                    <div class="member-initials">AA</div>
+                    <div class="member-name">Aryeh Abergel</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Full Team Grid -->
-    <section class="team-section">
-        <div class="container-wide" style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
-            <h2 class="section-heading-team">Team Members</h2>
-            <div class="team-grid">
-                <div class="team-card" onclick="openBio('Steven Jemal', 'Managing Director of Origination', 'steven')"><h4>Steven Jemal</h4><div class="team-card-role">Managing Director of Origination</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Alexander Wrede', 'Vice President', 'alexander')"><h4>Alexander Wrede</h4><div class="team-card-role">Vice President</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Max Rothman', 'Vice President', 'max')"><h4>Max Rothman</h4><div class="team-card-role">Vice President</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Nick Peragallo', 'Assistant Vice President', 'nick')"><h4>Nick Peragallo</h4><div class="team-card-role">Assistant Vice President</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Ryan Talgo', 'Assistant Vice President', 'ryan')"><h4>Ryan Talgo</h4><div class="team-card-role">Assistant Vice President</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Jackson Gray', 'Senior Associate', 'jackson')"><h4>Jackson Gray</h4><div class="team-card-role">Senior Associate</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Marcos de Moraes', 'Senior Construction Manager', 'marcos')"><h4>Marcos de Moraes</h4><div class="team-card-role">Senior Construction Manager</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Richard Racanelli', 'Senior Construction Associate', 'richard')"><h4>Richard Racanelli</h4><div class="team-card-role">Senior Construction Associate</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Grayson Cherubino', 'Construction Associate', 'grayson')"><h4>Grayson Cherubino</h4><div class="team-card-role">Construction Associate</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Grace Nanney', 'Associate', 'grace')"><h4>Grace Nanney</h4><div class="team-card-role">Associate</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Matthew Stauber', 'Associate', 'matthew')"><h4>Matthew Stauber</h4><div class="team-card-role">Associate</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Clayton Whitton', 'Senior Construction Analyst', 'clayton')"><h4>Clayton Whitton</h4><div class="team-card-role">Senior Construction Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Blake Shechtman', 'Senior Analyst', 'blake')"><h4>Blake Shechtman</h4><div class="team-card-role">Senior Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Peter Gasparro', 'Senior Analyst', 'peter')"><h4>Peter Gasparro</h4><div class="team-card-role">Senior Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Natalie Pedi', 'Analyst', 'natalie')"><h4>Natalie Pedi</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Alex De Castro', 'Analyst', 'alexdc')"><h4>Alex De Castro</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Kellen Furse', 'Analyst', 'kellen')"><h4>Kellen Furse</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Will Butz', 'Analyst', 'will')"><h4>Will Butz</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Alex Eversole', 'Analyst', 'alexe')"><h4>Alex Eversole</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Saul Pages', 'Analyst', 'saul')"><h4>Saul Pages</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Aryeh Abergel', 'Analyst', 'aryeh')"><h4>Aryeh Abergel</h4><div class="team-card-role">Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Joe Tages', 'Assistant Controller', 'joe')"><h4>Joe Tages</h4><div class="team-card-role">Assistant Controller</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Fatnisa Begolli', 'Senior Fund Accountant', 'fatnisa')"><h4>Fatnisa Begolli</h4><div class="team-card-role">Senior Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Olga Lisina', 'Fund Accountant', 'olga')"><h4>Olga Lisina</h4><div class="team-card-role">Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Tim Horan', 'Senior Fund Accountant', 'tim')"><h4>Tim Horan</h4><div class="team-card-role">Senior Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Ben-Hemir Collado', 'Treasury Analyst', 'ben')"><h4>Ben-Hemir Collado</h4><div class="team-card-role">Treasury Analyst</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Danielle Zalta', 'Fund Accountant', 'danielle')"><h4>Danielle Zalta</h4><div class="team-card-role">Fund Accountant</div><div class="bio-hint">Read bio →</div></div>
-                <div class="team-card" onclick="openBio('Tanya Glibitskiy', 'HR Specialist / Office Manager', 'tanya')"><h4>Tanya Glibitskiy</h4><div class="team-card-role">HR Specialist / Office Manager</div><div class="bio-hint">Read bio →</div></div>
+    <!-- Investment -->
+    <section class="dept-section">
+        <div class="dept-container">
+            <div class="dept-label">Department</div>
+            <div class="dept-title">Investment</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Matan Kurman', 'Head of Investments', 'matan')">
+                    <div class="member-initials">MK</div>
+                    <div class="member-name">Matan Kurman</div>
+                    <div class="member-role">Head of Investments</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Alexander Wrede', 'Vice President', 'alexander')">
+                    <div class="member-initials">AW</div>
+                    <div class="member-name">Alexander Wrede</div>
+                    <div class="member-role">Vice President</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Max Rothman', 'Vice President', 'max')">
+                    <div class="member-initials">MR</div>
+                    <div class="member-name">Max Rothman</div>
+                    <div class="member-role">Vice President</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Nick Peragallo', 'Assistant Vice President', 'nick')">
+                    <div class="member-initials">NP</div>
+                    <div class="member-name">Nick Peragallo</div>
+                    <div class="member-role">Assistant Vice President</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Ryan Talgo', 'Assistant Vice President', 'ryan')">
+                    <div class="member-initials">RT</div>
+                    <div class="member-name">Ryan Talgo</div>
+                    <div class="member-role">Assistant Vice President</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Jackson Gray', 'Senior Associate', 'jackson')">
+                    <div class="member-initials">JG</div>
+                    <div class="member-name">Jackson Gray</div>
+                    <div class="member-role">Senior Associate</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Matthew Stauber', 'Associate', 'matthew')">
+                    <div class="member-initials">MS</div>
+                    <div class="member-name">Matthew Stauber</div>
+                    <div class="member-role">Associate</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Peter Gasparro', 'Senior Analyst', 'peter')">
+                    <div class="member-initials">PG</div>
+                    <div class="member-name">Peter Gasparro</div>
+                    <div class="member-role">Senior Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Blake Shechtman', 'Senior Analyst', 'blake')">
+                    <div class="member-initials">BS</div>
+                    <div class="member-name">Blake Shechtman</div>
+                    <div class="member-role">Senior Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Natalie Pedi', 'Analyst', 'natalie')">
+                    <div class="member-initials">NP</div>
+                    <div class="member-name">Natalie Pedi</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Alex De Castro', 'Analyst', 'alexdc')">
+                    <div class="member-initials">AC</div>
+                    <div class="member-name">Alex De Castro</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Kellen Furse', 'Analyst', 'kellen')">
+                    <div class="member-initials">KF</div>
+                    <div class="member-name">Kellen Furse</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Will Butz', 'Analyst', 'will')">
+                    <div class="member-initials">WB</div>
+                    <div class="member-name">Will Butz</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction -->
+    <section class="dept-section">
+        <div class="dept-container">
+            <div class="dept-label">Department</div>
+            <div class="dept-title">Construction</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Paul Foschi', 'Head of Construction', 'paul')">
+                    <div class="member-initials">PF</div>
+                    <div class="member-name">Paul Foschi</div>
+                    <div class="member-role">Head of Construction</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Marcos de Moraes', 'Senior Construction Manager', 'marcos')">
+                    <div class="member-initials">MM</div>
+                    <div class="member-name">Marcos de Moraes</div>
+                    <div class="member-role">Senior Construction Manager</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Richard Racanelli', 'Senior Construction Associate', 'richard')">
+                    <div class="member-initials">RR</div>
+                    <div class="member-name">Richard Racanelli</div>
+                    <div class="member-role">Senior Construction Associate</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Grayson Cherubino', 'Construction Associate', 'grayson')">
+                    <div class="member-initials">GC</div>
+                    <div class="member-name">Grayson Cherubino</div>
+                    <div class="member-role">Construction Associate</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Clayton Whitton', 'Senior Construction Analyst', 'clayton')">
+                    <div class="member-initials">CW</div>
+                    <div class="member-name">Clayton Whitton</div>
+                    <div class="member-role">Senior Construction Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accounting & Compliance -->
+    <section class="dept-section">
+        <div class="dept-container">
+            <div class="dept-label">Department</div>
+            <div class="dept-title">Accounting &amp; Compliance</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Ari Kalton', 'Chief Financial Officer', 'ari')">
+                    <div class="member-initials">AK</div>
+                    <div class="member-name">Ari Kalton</div>
+                    <div class="member-role">Chief Financial Officer</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card is-leader" onclick="openBio('Betty Valouktzis', 'Chief Compliance Officer', 'betty')">
+                    <div class="member-initials">BV</div>
+                    <div class="member-name">Betty Valouktzis</div>
+                    <div class="member-role">Chief Compliance Officer</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Joe Tages', 'Assistant Controller', 'joe')">
+                    <div class="member-initials">JT</div>
+                    <div class="member-name">Joe Tages</div>
+                    <div class="member-role">Assistant Controller</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Olga Lisina', 'Fund Accountant', 'olga')">
+                    <div class="member-initials">OL</div>
+                    <div class="member-name">Olga Lisina</div>
+                    <div class="member-role">Fund Accountant</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Ben-Hemir Collado', 'Treasury Analyst', 'ben')">
+                    <div class="member-initials">BC</div>
+                    <div class="member-name">Ben-Hemir Collado</div>
+                    <div class="member-role">Treasury Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Fatnisa Begolli', 'Senior Fund Accountant', 'fatnisa')">
+                    <div class="member-initials">FB</div>
+                    <div class="member-name">Fatnisa Begolli</div>
+                    <div class="member-role">Senior Fund Accountant</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Tim Horan', 'Senior Fund Accountant', 'tim')">
+                    <div class="member-initials">TH</div>
+                    <div class="member-name">Tim Horan</div>
+                    <div class="member-role">Senior Fund Accountant</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Danielle Zalta', 'Fund Accountant', 'danielle')">
+                    <div class="member-initials">DZ</div>
+                    <div class="member-name">Danielle Zalta</div>
+                    <div class="member-role">Fund Accountant</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing & IR -->
+    <section class="dept-section">
+        <div class="dept-container">
+            <div class="dept-label">Department</div>
+            <div class="dept-title">Marketing &amp; Investor Relations</div>
+            <div class="dept-grid">
+                <div class="member-card is-leader" onclick="openBio('Michelle Fang', 'Head of Global Marketing &amp; IR', 'michelle')">
+                    <div class="member-initials">MF</div>
+                    <div class="member-name">Michelle Fang</div>
+                    <div class="member-role">Head of Global Marketing &amp; IR</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Grace Nanney', 'Associate', 'grace')">
+                    <div class="member-initials">GN</div>
+                    <div class="member-name">Grace Nanney</div>
+                    <div class="member-role">Associate</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Alex Eversole', 'Analyst', 'alexe')">
+                    <div class="member-initials">AE</div>
+                    <div class="member-name">Alex Eversole</div>
+                    <div class="member-role">Analyst</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
+                <div class="member-card" onclick="openBio('Tanya Glibitskiy', 'HR Specialist / Office Manager', 'tanya')">
+                    <div class="member-initials">TG</div>
+                    <div class="member-name">Tanya Glibitskiy</div>
+                    <div class="member-role">HR Specialist / Office Manager</div>
+                    <div class="member-hint">Read bio →</div>
+                </div>
             </div>
         </div>
     </section>
@@ -360,9 +404,9 @@
             alexander: `<p>Alexander Wrede leads underwriting and asset management for S3 Capital's Larger Balance Loan Fund Series. He joined S3 Capital in 2018 as an Analyst and has played a key role in the firm's growth over the past eight years.</p><p>In his current role, Alexander is responsible for underwriting and evaluating new and existing loans, overseeing the construction portfolio, and supporting day-to-day operations. Prior to joining S3 Capital, Alexander earned a B.S. in Business Administration and Finance from Bucknell University's Freeman College of Management.</p>`,
             max: `<p>Max Rothman joined S3 Capital in September 2024 and is responsible for underwriting new and existing loans and supporting day-to-day operations. Prior to joining S3 Capital, Max was an Associate at Wells Fargo in the Real Estate Banking Group.</p><p>He earned a B.A. in Economics from the University of Michigan and an MBA from the University of Chicago Booth School of Business.</p>`,
             nick: `<p>Nick Peragallo joined S3 Capital in February 2022 and supports underwriting for new and existing loans, fund operations, and portfolio oversight. Prior to S3 Capital, Nick worked at Apprise by Walker &amp; Dunlop as an Associate Commercial Real Estate Appraiser.</p><p>He earned a B.S. in Finance and Management from Boston College's Carroll School of Management.</p>`,
-            ryan: `<p>Ryan Talgo joined S3 Capital in January 2025 and focuses on underwriting new and existing loans and supporting fund operations. Prior to S3 Capital, Ryan was an Associate at Churchill Real Estate, where he worked in direct lending and warehouse financing. He also completed internships at New York Life and JLL.</p><p>Ryan earned a Bachelor of Business Administration with a specialization in Accounting from George Washington University.</p>`,
+            ryan: `<p>Ryan Talgo joined S3 Capital in January 2025 and focuses on underwriting new and existing loans and supporting fund operations. Prior to S3 Capital, Ryan was an Associate at Churchill Real Estate, where he worked in direct lending and warehouse financing.</p><p>Ryan earned a Bachelor of Business Administration with a specialization in Accounting from George Washington University.</p>`,
             jackson: `<p>Jackson Gray joined S3 Capital in June 2022 and is responsible for underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Jackson interned at Blackthorne Capital Management, a quantitative hedge fund focused on commodities, futures, and global indices.</p><p>He earned a B.B.A. in Finance and Real Estate from the Wisconsin School of Business.</p>`,
-            marcos: `<p>Marcos De Moraes joined S3 Capital in June 2025 and brings over 15 years of experience in construction and real estate development, specializing in high-rise and complex urban projects. He has managed the construction of supertall residential towers in Manhattan and Downtown Brooklyn, contributing to some of New York City's most notable developments.</p><p>Prior to S3 Capital, Marcos held senior roles at a leading construction management firm. He earned a degree in Mechanical Engineering and completed a specialization in Construction Management at Columbia University. Marcos is also a certified Project Management Professional (PMP).</p>`,
+            marcos: `<p>Marcos De Moraes joined S3 Capital in June 2025 and brings over 15 years of experience in construction and real estate development, specializing in high-rise and complex urban projects. He has managed the construction of supertall residential towers in Manhattan and Downtown Brooklyn.</p><p>He earned a degree in Mechanical Engineering and completed a specialization in Construction Management at Columbia University. Marcos is also a certified Project Management Professional (PMP).</p>`,
             richard: `<p>Richard Racanelli joined S3 Capital in 2022 and is responsible for underwriting and evaluating new and existing loans, overseeing the construction portfolio, and supporting day-to-day operations. Prior to S3 Capital, Richard worked at Racanelli Construction Company as an Assistant Project Superintendent.</p><p>He earned a B.S. in Management from Boston College with concentrations in Finance and Management &amp; Leadership.</p>`,
             grayson: `<p>Grayson Cherubino joined S3 Capital in 2024 and is responsible for overseeing the construction portfolio, conducting site inspections, and supporting day-to-day operations. Prior to S3 Capital, Grayson worked at John Moriarty &amp; Associates as a Field Superintendent.</p><p>He earned a B.S. in Business Administration from Bucknell University's Freeman College of Management, where he was elected captain of the football team.</p>`,
             grace: `<p>Grace Nanney joined S3 Capital in September 2024 and supports the Marketing &amp; Investor Relations team. Prior to S3 Capital, Grace worked as a Client Relationship Executive on the Real Estate Team at Oxford Economics and began her career as an Associate in the Capital Markets Group at AlphaSights.</p><p>She graduated cum laude from Vanderbilt University with a dual degree in Human &amp; Organizational Development and Communication Studies.</p>`,
@@ -371,14 +415,14 @@
             blake: `<p>Blake Shechtman joined S3 Capital in January 2026 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Blake worked at Green Courte Partners in real estate private equity acquisitions and at The Blackstone Group in asset management.</p><p>He earned a B.A. in Economics from the University of Michigan with a concentration in Sport Policy and Analytics.</p>`,
             peter: `<p>Peter Gasparro joined S3 Capital in July 2024 and is responsible for underwriting new loans and supporting day-to-day operations. Prior to S3 Capital, Peter interned at One William Street Real Estate Finance, an alternative lender.</p><p>He earned a B.S. in Management with a concentration in Finance from Boston College's Carroll School of Management.</p>`,
             natalie: `<p>Natalie Pedi joined S3 Capital in July 2024 and is responsible for underwriting new and existing loans across the firm's portfolio.</p>`,
-            alexdc: `<p>Alex de Castro joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Alex held roles in real estate acquisitions and asset management at The Dermot Company and Steers Private Fund, as well as corporate finance at Starwood Capital Group.</p><p>He earned a B.S. in Business Administration with a focus in Finance from Georgetown University, where he was part of the Global Business Fellows program.</p>`,
-            kellen: `<p>Kellen Furse joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Kellen interned at Strategas Securities in equity research and held data analytics roles at the Massachusetts Department of Public Health and Betting Hero.</p><p>He earned a B.S. in Finance from Wake Forest University.</p>`,
-            will: `<p>Will Butz joined S3 Capital in January 2026 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Will was an analyst with Brean Strategic Advisors in New York, where he supported project-finance risk analysis, evaluated MBS and loan portfolios, and built performance reporting tools. He also held roles at Dakota Investments and Innovation Capital Investment Bankers.</p><p>Will earned a B.A. in Financial Economics from Columbia University, where he was a member of the varsity football team.</p>`,
-            alexe: `<p>Alex Eversole joined S3 Capital in July 2025 and supports the Marketing &amp; Investor Relations team. Prior to S3 Capital, Alex gained experience in commercial real estate finance and development through internships at Eastdil Secured and Stanford University's Land, Buildings &amp; Real Estate group (LBRE).</p><p>She earned a B.A. in Political Science from UCLA, where she served as Co-President of the Bruin Real Estate Association.</p>`,
+            alexdc: `<p>Alex de Castro joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Alex held roles at The Dermot Company, Steers Private Fund, and Starwood Capital Group.</p><p>He earned a B.S. in Business Administration with a focus in Finance from Georgetown University, where he was part of the Global Business Fellows program.</p>`,
+            kellen: `<p>Kellen Furse joined S3 Capital in August 2025 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Kellen interned at Strategas Securities in equity research.</p><p>He earned a B.S. in Finance from Wake Forest University.</p>`,
+            will: `<p>Will Butz joined S3 Capital in January 2026 and assists with underwriting new and existing loans and supporting day-to-day operations. Prior to S3 Capital, Will was an analyst with Brean Strategic Advisors in New York and held roles at Dakota Investments and Innovation Capital Investment Bankers.</p><p>Will earned a B.A. in Financial Economics from Columbia University, where he was a member of the varsity football team.</p>`,
+            alexe: `<p>Alex Eversole joined S3 Capital in July 2025 and supports the Marketing &amp; Investor Relations team. Prior to S3 Capital, Alex gained experience through internships at Eastdil Secured and Stanford University's Land, Buildings &amp; Real Estate group.</p><p>She earned a B.A. in Political Science from UCLA, where she served as Co-President of the Bruin Real Estate Association.</p>`,
             saul: `<p>Saul Pages joined S3 Capital in July 2025 and supports the origination team. Prior to S3 Capital, Saul was a Branch Manager at MCM Holdings, Inc., specializing in mortgage lending.</p>`,
             aryeh: `<p>Aryeh Abergel joined S3 Capital in February 2026 and supports the origination team. Prior to S3 Capital, Aryeh was a Private Banking Intern at Safra National Bank and an Acquisitions Analyst at KCore Holdings.</p><p>He earned a B.S. in Finance from Yeshiva University's Sy Syms School of Business.</p>`,
             joe: `<p>Joseph Tages joined S3 Capital in May 2022 and serves as Assistant Controller. Prior to S3 Capital, Joseph worked in public accounting for three years at CBIZ/Marks Paneth.</p><p>He earned both his undergraduate and master's degrees in accounting from Pace University.</p>`,
-            fatnisa: `<p>Fatnisa Begolli joined S3 Capital in June 2025 as a Senior Fund Accountant. She earned a B.S. in Accounting from the University of Prishtina in Kosovo, where she received a full merit-based scholarship.</p><p>Fatnisa previously served as Associate Director in the Alternative Investments division at Oppenheimer &amp; Co., focusing on fund accounting for hedge funds and private equity funds. She has passed the CFA Level I exam and is fluent in English, Albanian, and Spanish.</p>`,
+            fatnisa: `<p>Fatnisa Begolli joined S3 Capital in June 2025 as a Senior Fund Accountant. She previously served as Associate Director in the Alternative Investments division at Oppenheimer &amp; Co., focusing on fund accounting for hedge funds and private equity funds.</p><p>She earned a B.S. in Accounting from the University of Prishtina and has passed the CFA Level I exam. She is fluent in English, Albanian, and Spanish.</p>`,
             olga: `<p>Olga Lisina joined S3 Capital as a Fund Accountant in January 2017. Prior to joining S3, she worked as a Payroll Manager and Accountant at Branded Restaurants USA and as a bank teller at Santander Bank.</p><p>She received her BBA in Finance from Baruch College of CUNY and a Bachelor of Engineering from Ukrainian Academy of Printing. She is fluent in Russian and Ukrainian.</p>`,
             tim: `<p>Tim Horan joined S3 Capital in December 2025 as a Senior Fund Accountant. Prior to S3 Capital, Tim was a Senior Associate at New York Life Real Estate Investors in the equity accounting group.</p><p>He earned a BBA in Finance from Saint Bonaventure University.</p>`,
             ben: `<p>Ben-Hemir Collado joined S3 Capital in April 2025 as a Treasury Analyst. Prior to S3 Capital, Ben worked as a Fund Accountant at Banner Ridge Partners and as an Internal Auditor at Daiwa Capital Markets America Inc.</p><p>He holds a BBA in Accounting from Baruch College of CUNY and is completing an M.S. in Accountancy to fulfill CPA licensure requirements.</p>`,
